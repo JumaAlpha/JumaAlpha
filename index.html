@@ -476,7 +476,7 @@
         alert('Please enter your WhatsApp number.');
         return;
       }
-      const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi, this is ${name}. ${message}`)}`;
+      const whatsappLink = `https://wa.me/$+254768031594?text=${encodeURIComponent(`Hi, this is ${name}. ${message}`)}`;
       window.open(whatsappLink, '_blank');
     } else {
       alert('Please select a communication method.');
