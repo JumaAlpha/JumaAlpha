@@ -402,13 +402,13 @@
         </div><!-- end of container -->
     </section><!-- end of blog section -->
 
-    <!-- contact section --><section class="section" id="contact">
+<section class="section" id="contact">
   <div class="container text-center">
     <p class="section-subtitle">How can you communicate?</p>
     <h6 class="section-title mb-5">Contact Me</h6>
 
     <!-- contact form -->
-    <form action="" class="contact-form col-md-10 col-lg-8 m-auto">
+    <form id="contactForm" class="contact-form col-md-10 col-lg-8 m-auto">
       <div class="form-row">
         <!-- Communication Method -->
         <div class="form-group col-sm-12">
@@ -422,50 +422,68 @@
 
         <!-- Name -->
         <div class="form-group col-sm-6">
-          <input type="text" size="50" class="form-control" placeholder="Your Name" required>
+          <input type="text" id="name" class="form-control" placeholder="Your Name" required>
         </div>
 
-        <!-- Email Field (will be shown only if Email is selected) -->
+        <!-- Email Field -->
         <div class="form-group col-sm-6" id="emailField" style="display: none;">
-          <input type="email" class="form-control" placeholder="Enter Email" required>
+          <input type="email" id="email" class="form-control" placeholder="Enter Email">
         </div>
 
-        <!-- WhatsApp Field (will be shown only if WhatsApp is selected) -->
+        <!-- WhatsApp Field -->
         <div class="form-group col-sm-6" id="whatsappField" style="display: none;">
-          <input type="text" class="form-control" placeholder="Enter Your WhatsApp Number" required>
+          <input type="text" id="whatsapp" class="form-control" placeholder="Enter Your WhatsApp Number">
         </div>
 
         <!-- Message -->
         <div class="form-group col-sm-12">
-          <textarea name="comment" id="comment" rows="6" class="form-control" placeholder="Write Something"></textarea>
+          <textarea name="message" id="message" rows="6" class="form-control" placeholder="Write Something"></textarea>
         </div>
 
         <!-- Submit Button -->
         <div class="form-group col-sm-12 mt-3">
-          <input type="submit" value="Send Message" class="btn btn-outline-primary rounded">
+          <button type="button" id="sendMessage" class="btn btn-outline-primary rounded">Send Message</button>
         </div>
       </div>
     </form><!-- end of contact form -->
   </div><!-- end of container -->
-</section><!-- end of contact section -->
+</section>
 
 <!-- JavaScript to toggle fields based on the communication method -->
 <script>
-  document.getElementById('contactMethod').addEventListener('change', function() {
-    var selectedMethod = this.value;
-    
-    // Show and hide fields based on the selected method
-    if (selectedMethod === 'email') {
-      document.getElementById('emailField').style.display = 'block';
-      document.getElementById('whatsappField').style.display = 'none';
-    } else if (selectedMethod === 'whatsapp') {
-      document.getElementById('emailField').style.display = 'none';
-      document.getElementById('whatsappField').style.display = 'block';
+  document.getElementById('contactMethod').addEventListener('change', function () {
+    const selectedMethod = this.value;
+    document.getElementById('emailField').style.display = selectedMethod === 'email' ? 'block' : 'none';
+    document.getElementById('whatsappField').style.display = selectedMethod === 'whatsapp' ? 'block' : 'none';
+  });
+
+  document.getElementById('sendMessage').addEventListener('click', function () {
+    const method = document.getElementById('contactMethod').value;
+    const name = document.getElementById('name').value;
+    const message = document.getElementById('message').value;
+
+    if (method === 'email') {
+      const email = document.getElementById('email').value;
+      if (!email) {
+        alert('Please enter your email address.');
+        return;
+      }
+      const mailtoLink = `mailto:${email}?subject=Message from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
+      window.open(mailtoLink, '_blank');
+    } else if (method === 'whatsapp') {
+      const whatsappNumber = document.getElementById('whatsapp').value;
+      if (!whatsappNumber) {
+        alert('Please enter your WhatsApp number.');
+        return;
+      }
+      const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi, this is ${name}. ${message}`)}`;
+      window.open(whatsappLink, '_blank');
     } else {
-      document.getElementById('emailField').style.display = 'none';
-      document.getElementById('whatsappField').style.display = 'none';
+      alert('Please select a communication method.');
     }
   });
+</script>
+
 </script>
 
 
