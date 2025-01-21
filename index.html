@@ -17,6 +17,26 @@
         html{
             scroll-behavior: smooth;
         }
+        .modal-body {
+    text-align: center;
+}
+
+.portfolio-image {
+    margin-bottom: 20px;
+}
+
+.portfolio-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.portfolio-image p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #555;
+}
+
     </style>
 </head>
 
@@ -271,7 +291,7 @@
                         <span class="portfolio-card-overlay">
                             <span class="portfolio-card-caption">
                                 <h4>Web Designing</h5>
-                                    <p class="font-weight-normal">Category: Web Templates</p>
+                                    <p class="font-weight-normal">Category: Front End</p>
                             </span>
                         </span>
                     </a>
@@ -283,7 +303,7 @@
                         <span class="portfolio-card-overlay">
                             <span class="portfolio-card-caption">
                                 <h4>Web Designing</h5>
-                                    <p class="font-weight-normal">Category: Web Templates</p>
+                                    <p class="font-weight-normal">Category: Backend</p>
                             </span>
                         </span>
                     </a>
@@ -295,7 +315,7 @@
                         <span class="portfolio-card-overlay">
                             <span class="portfolio-card-caption">
                                 <h4>Web Designing</h5>
-                                    <p class="font-weight-normal">Category: Web Templates</p>
+                                    <p class="font-weight-normal">Category: E-commerce</p>
                             </span>
                         </span>
                     </a>
@@ -303,7 +323,69 @@
             </div><!-- end of row -->
         </div><!-- end of container -->
     </section> <!-- end of portfolio section -->
-   
+
+    <script>
+        $(document).ready(function() {
+    // Event listener for opening the modal
+    $('a[data-toggle="modal"]').on('click', function() {
+        var category = $(this).data('category');
+        var portfolioImages = getPortfolioImagesByCategory(category);
+        
+        // Empty the modal content before inserting new images
+        $('#portfolioModal .portfolio-images').empty();
+        
+        // Insert images and captions into the modal
+        portfolioImages.forEach(function(image) {
+            var imageHtml = `
+                <div class="portfolio-image">
+                    <img src="${image.src}" alt="${image.caption}" class="img-fluid">
+                    <p>${image.caption}</p>
+                </div>
+            `;
+            $('#portfolioModal .portfolio-images').append(imageHtml);
+        });
+    });
+});
+
+// Function to return portfolio images based on category
+function getPortfolioImagesByCategory(category) {
+    var images = {
+        'Front End': [
+            { src: 'assets/imgs/front-end-1.jpg', caption: 'Front-end Design 1' },
+            { src: 'assets/imgs/front-end-2.jpg', caption: 'Front-end Design 2' }
+        ],
+        'Backend': [
+            { src: 'assets/imgs/backend-1.jpg', caption: 'Backend Development 1' },
+            { src: 'assets/imgs/backend-2.jpg', caption: 'Backend Development 2' }
+        ],
+        'E-commerce': [
+            { src: 'assets/imgs/e-commerce-1.jpg', caption: 'E-commerce Site 1' },
+            { src: 'assets/imgs/e-commerce-2.jpg', caption: 'E-commerce Site 2' }
+        ]
+    };
+    
+    return images[category] || [];
+}
+
+    </script>
+
+    <div class="modal fade" id="portfolioModal" tabindex="-1" role="dialog" aria-labelledby="portfolioModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="portfolioModalLabel">Category Portfolio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="portfolio-images">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- section -->
     <section class="section-sm bg-primary">
         <!-- container -->
@@ -538,6 +620,7 @@
     <!-- core  -->
     <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
     <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+    
 
     <!-- bootstrap 3 affix -->
     <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
