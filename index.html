@@ -42,78 +42,82 @@
     color: #555;
 }
         /* Add this to your CSS file */
-/* Service Cards Animation Styles */
+
+/* Service Cards Container */
+#service .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Service Card Base Styles */
 .service-card {
     transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-    transform-style: preserve-3d;
+    transform-origin: center;
     cursor: pointer;
     position: relative;
     overflow: hidden;
     z-index: 1;
+    height: 100%;
+    margin-bottom: 1rem; /* Add consistent margin */
 }
 
+/* Card Body - ensures consistent sizing */
 .service-card .body {
     transition: all 0.4s ease;
     position: relative;
     z-index: 2;
     background: white;
     height: 100%;
-    border-radius: inherit;
     padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
+/* Fixed Hover Transform */
 .service-card:hover {
-    transform: translateY(-8px) rotate(1deg) scale(1.03);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    transform: translateY(-10px) scale(1.03);
+    /* Remove rotation to prevent misalignment */
 }
 
-.service-card:hover .body {
-    background: rgba(255,255,255,0.9);
-}
-
-.service-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
-}
-
-.service-card:hover::after {
-    opacity: 0.1;
-}
-
+/* Consistent Icon Size */
 .service-card .icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
     transition: all 0.4s ease;
 }
 
-.service-card:hover .icon {
-    transform: scale(1.1) rotate(5deg);
-    filter: brightness(1.1);
+/* Hover Effects */
+.service-card:hover .body {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
-/* Dancing Animation */
+.service-card:hover .icon {
+    transform: scale(1.1);
+    /* Remove rotation to prevent layout shift */
+}
+
+/* Dancing Animation - Fixed */
 @keyframes gentleDance {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    25% { transform: translateY(-5px) rotate(1deg); }
-    50% { transform: translateY(0) rotate(-1deg); }
-    75% { transform: translateY(-3px) rotate(0.5deg); }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    /* Remove rotation to prevent misalignment */
 }
 
 .attention-dance {
     animation: gentleDance 2s ease infinite;
 }
 
-/* Click Animation */
+/* Click Animation - Fixed */
 @keyframes clickBounce {
-    0% { transform: translateY(-8px) scale(1.03); }
-    50% { transform: translateY(0) scale(0.97); }
-    100% { transform: translateY(-10px) scale(1.05); }
+    0% { transform: translateY(-10px) scale(1.03); }
+    50% { transform: translateY(0) scale(0.98); }
+    100% { transform: translateY(-10px) scale(1.03); }
 }
 
 .click-animate {
