@@ -22,26 +22,162 @@
         html{
             scroll-behavior: smooth;
         }
-        .modal-body {
-    text-align: center;
+/* Portfolio Section */
+#portfolio {
+    padding: 80px 0;
+    background: #f9f9f9;
 }
 
-.portfolio-image {
-    margin-bottom: 20px;
+.portfolio-filter {
+    margin-bottom: 40px;
 }
 
-.portfolio-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.portfolio-image p {
-    margin-top: 10px;
-    font-size: 1.2rem;
+.filter-btn {
+    background: none;
+    border: none;
+    padding: 8px 20px;
+    margin: 0 5px;
+    font-weight: 600;
     color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 30px;
 }
-        /* Add this to your CSS file */
+
+.filter-btn.active, .filter-btn:hover {
+    background: #6c63ff;
+    color: white;
+}
+
+.portfolio-card {
+    margin-bottom: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.portfolio-img-container {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+.portfolio-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.portfolio-card:hover .portfolio-img {
+    transform: scale(1.05);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(108, 99, 255, 0.9);
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-info {
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.portfolio-info h4 {
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.portfolio-links {
+    margin-top: 20px;
+}
+
+.portfolio-links a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border-radius: 50%;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.portfolio-links a:hover {
+    background: white;
+    color: #6c63ff;
+}
+
+.portfolio-caption {
+    padding: 20px;
+    background: white;
+}
+
+.portfolio-caption h5 {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.portfolio-caption span {
+    color: #777;
+    font-size: 14px;
+}
+
+/* Portfolio Modal */
+.portfolio-modal-carousel .owl-item img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.portfolio-modal-details {
+    padding: 20px;
+}
+
+.portfolio-modal-details h3 {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.project-info h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.tech-list, .features-list {
+    padding-left: 20px;
+}
+
+.tech-list li, .features-list li {
+    margin-bottom: 8px;
+}
+
+.live-demo {
+    margin-top: 20px;
+    display: inline-block;
+}     /* Add this to your CSS file */
 
 /* Service Cards Container */
 #service .row {
@@ -474,113 +610,247 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     <!-- portfolio section -->
-    <section class="section" id="portfolio">
-    <div class="container text-center">
-        <p class="section-subtitle">What I Did ?</p>
-        <h6 class="section-title mb-6">Portfolio</h6>
-        <!-- row -->
-        <div class="row">
-            <div class="col-md-4">
-                Frontend
-                <a href="#" class="portfolio-card" data-toggle="modal" data-target="#portfolioModal" data-category="Front End">
-                    <img src="assets/imgs/folio-1.jpg" class="portfolio-card-img" alt="Web Designing Front End">
-                    <span class="portfolio-card-overlay">
-                        <span class="portfolio-card-caption">
-                            <h4>Web Designing</h4>
-                            <p class="font-weight-normal">Category: Front End</p>
-                        </span>
-                    </span>
-                </a>
+ <section class="section" id="portfolio">
+    <div class="container">
+        <div class="text-center mb-6">
+            <p class="section-subtitle">My Creative Works</p>
+            <h2 class="section-title">Portfolio Showcase</h2>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="frontend">Frontend</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
             </div>
-            <div class="col-md-4">
-                Backend
-                <a href="#" class="portfolio-card" data-toggle="modal" data-target="#portfolioModal" data-category="Backend">
-                    <img class="portfolio-card-img" src="assets/imgs/folio-2.jpg" alt="Web Designing Backend">
-                    <span class="portfolio-card-overlay">
-                        <span class="portfolio-card-caption">
-                            <h4>Web Designing</h4>
-                            <p class="font-weight-normal">Category: Backend</p>
-                        </span>
-                    </span>
-                </a>
-            </div>
-            <div class="col-md-4">
-                E-commerce
-                <a href="#" class="portfolio-card" data-toggle="modal" data-target="#portfolioModal" data-category="E-commerce">
-                    <img class="portfolio-card-img" src="assets/imgs/folio-3.jpg" alt="Web Designing E-commerce">
-                    <span class="portfolio-card-overlay">
-                        <span class="portfolio-card-caption">
-                            <h4>Web Designing</h4>
-                            <p class="font-weight-normal">Category: E-commerce</p>
-                        </span>
-                    </span>
-                </a>
-            </div>
-        </div><!-- end of row -->
-    </div><!-- end of container -->
-</section> 
-    <script>
-        $(document).ready(function() {
-    // Event listener for opening the modal
-    $('a[data-toggle="modal"]').on('click', function() {
-        var category = $(this).data('category');
-        var portfolioImages = getPortfolioImagesByCategory(category);
-        
-        // Empty the modal content before inserting new images
-        $('#portfolioModal .portfolio-images').empty();
-        
-        // Insert images and captions into the modal
-        portfolioImages.forEach(function(image) {
-            var imageHtml = `
-                <div class="portfolio-image">
-                    <img src="${image.src}" alt="${image.caption}" class="img-fluid">
-                    <p>${image.caption}</p>
+        </div>
+
+        <div class="row portfolio-grid">
+            <!-- Portfolio Item 1 -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="frontend">
+                <div class="portfolio-card">
+                    <div class="portfolio-img-container">
+                        <img src="assets/imgs/folio-1.jpg" alt="E-commerce Dashboard" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>E-commerce Dashboard</h4>
+                                <p>React, Redux, Chart.js</p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-details" data-toggle="modal" data-target="#portfolioModal" 
+                                       data-title="E-commerce Dashboard" 
+                                       data-description="A comprehensive dashboard for e-commerce analytics with real-time data visualization."
+                                       data-tech="React, Redux, Chart.js, REST API"
+                                       data-images='["assets/imgs/frontend-1.jpg","assets/imgs/frontend-2.jpg"]'
+                                       data-link="https://example.com">
+                                        <i class="fas fa-expand"></i>
+                                    </a>
+                                    <a href="https://example.com" target="_blank" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-caption">
+                        <h5>E-commerce Dashboard</h5>
+                        <span>Frontend Development</span>
+                    </div>
                 </div>
-            `;
-            $('#portfolioModal .portfolio-images').append(imageHtml);
-        });
-    });
-});
+            </div>
 
-// Function to return portfolio images based on category
-function getPortfolioImagesByCategory(category) {
-    var images = {
-        'Front End': [
-            { src: 'assets/imgs/front-end-1.jpg', caption: 'Front-end Design 1' },
-            { src: 'assets/imgs/front-end-2.jpg', caption: 'Front-end Design 2' }
-        ],
-        'Backend': [
-            { src: 'assets/imgs/backend-1.jpg', caption: 'Backend Development 1' },
-            { src: 'assets/imgs/backend-2.jpg', caption: 'Backend Development 2' }
-        ],
-        'E-commerce': [
-            { src: 'assets/imgs/e-commerce-1.jpg', caption: 'E-commerce Site 1' },
-            { src: 'assets/imgs/e-commerce-2.jpg', caption: 'E-commerce Site 2' }
-        ]
-    };
-    
-    return images[category] || [];
-}
+            <!-- Portfolio Item 2 -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="backend">
+                <div class="portfolio-card">
+                    <div class="portfolio-img-container">
+                        <img src="assets/imgs/folio-2.jpg" alt="API Service" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>API Service</h4>
+                                <p>Node.js, Express, MongoDB</p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-details" data-toggle="modal" data-target="#portfolioModal"
+                                       data-title="API Service" 
+                                       data-description="RESTful API service with authentication and data processing capabilities."
+                                       data-tech="Node.js, Express, MongoDB, JWT"
+                                       data-images='["assets/imgs/backend-1.jpg","assets/imgs/backend-2.jpg"]'
+                                       data-link="https://api.example.com">
+                                        <i class="fas fa-expand"></i>
+                                    </a>
+                                    <a href="https://api.example.com" target="_blank" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-caption">
+                        <h5>API Service</h5>
+                        <span>Backend Development</span>
+                    </div>
+                </div>
+            </div>
 
-    </script>
+            <!-- Portfolio Item 3 -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="ecommerce">
+                <div class="portfolio-card">
+                    <div class="portfolio-img-container">
+                        <img src="assets/imgs/folio-3.jpg" alt="Online Store" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>Online Store</h4>
+                                <p>React, Node.js, Stripe</p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-details" data-toggle="modal" data-target="#portfolioModal"
+                                       data-title="Online Store" 
+                                       data-description="Full-featured e-commerce platform with payment processing and inventory management."
+                                       data-tech="React, Node.js, MongoDB, Stripe API"
+                                       data-images='["assets/imgs/ecommerce-1.jpg","assets/imgs/ecommerce-2.jpg"]'
+                                       data-link="https://store.example.com">
+                                        <i class="fas fa-expand"></i>
+                                    </a>
+                                    <a href="https://store.example.com" target="_blank" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-caption">
+                        <h5>Online Store</h5>
+                        <span>E-commerce Solution</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <div class="modal fade" id="portfolioModal" tabindex="-1" role="dialog" aria-labelledby="portfolioModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+<!-- Portfolio Modal -->
+<div class="modal fade" id="portfolioModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="portfolioModalLabel">Category Portfolio</h5>
+                <h5 class="modal-title" id="portfolioModalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="portfolio-images">
-                    <!-- Dynamic content will be inserted here -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="portfolio-modal-carousel owl-carousel">
+                                <!-- Images will be inserted here by JavaScript -->
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="portfolio-modal-details">
+                                <h3>Project Details</h3>
+                                <p class="project-description"></p>
+                                
+                                <div class="project-info">
+                                    <h4>Technologies Used</h4>
+                                    <ul class="tech-list"></ul>
+                                    
+                                    <h4>Project Features</h4>
+                                    <ul class="features-list"></ul>
+                                    
+                                    <a href="#" class="btn btn-primary live-demo" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> View Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+    <script>
+        $(document).ready(function() {
+    // Portfolio filter
+    $('.filter-btn').click(function() {
+        $('.filter-btn').removeClass('active');
+        $(this).addClass('active');
+        
+        const filterValue = $(this).data('filter');
+        if (filterValue === 'all') {
+            $('.portfolio-item').show();
+        } else {
+            $('.portfolio-item').hide();
+            $(`.portfolio-item[data-category="${filterValue}"]`).show();
+        }
+    });
+
+    // Initialize Owl Carousel for modal
+    $('.portfolio-modal-carousel').owlCarousel({
+        items: 1,
+        loop: true,
+        margin: 10,
+        nav: true,
+        dots: false,
+        navText: [
+            '<i class="fas fa-chevron-left"></i>',
+            '<i class="fas fa-chevron-right"></i>'
+        ]
+    });
+
+    // Portfolio modal content
+    $('.portfolio-details').click(function() {
+        const title = $(this).data('title');
+        const description = $(this).data('description');
+        const tech = $(this).data('tech');
+        const images = JSON.parse($(this).data('images'));
+        const link = $(this).data('link');
+        
+        // Set modal title
+        $('#portfolioModalLabel').text(title);
+        
+        // Set project description
+        $('.project-description').text(description);
+        
+        // Set technologies
+        $('.tech-list').empty();
+        tech.split(',').forEach(techItem => {
+            $('.tech-list').append(`<li>${techItem.trim()}</li>`);
+        });
+        
+        // Set features (example - you can add actual features)
+        $('.features-list').empty();
+        const features = [
+            'Responsive Design',
+            'Cross-browser Compatibility',
+            'Optimized Performance'
+        ];
+        features.forEach(feature => {
+            $('.features-list').append(`<li>${feature}</li>`);
+        });
+        
+        // Set live demo link
+        $('.live-demo').attr('href', link);
+        
+        // Set carousel images
+        $('.portfolio-modal-carousel').trigger('destroy.owl.carousel');
+        $('.portfolio-modal-carousel').html('');
+        images.forEach(image => {
+            $('.portfolio-modal-carousel').append(
+                `<div class="item"><img src="${image}" alt="${title}" class="img-fluid"></div>`
+            );
+        });
+        $('.portfolio-modal-carousel').owlCarousel({
+            items: 1,
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: false,
+            navText: [
+                '<i class="fas fa-chevron-left"></i>',
+                '<i class="fas fa-chevron-right"></i>'
+            ]
+        });
+    });
+});
+    </script>
     <!-- section -->
     <section class="section-sm bg-primary">
         <!-- container -->
