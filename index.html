@@ -273,25 +273,40 @@
             </div><!-- end of row -->
         </div>
     </section><!-- end of service section -->
-    <script>
-
+<script>
 document.addEventListener('DOMContentLoaded', function() {
     const serviceCards = document.querySelectorAll('.service-card');
+    
+    // Make all cards the same height
+    function equalizeCardHeights() {
+        let maxHeight = 0;
+        serviceCards.forEach(card => {
+            const height = card.offsetHeight;
+            if (height > maxHeight) maxHeight = height;
+        });
+        
+        serviceCards.forEach(card => {
+            card.style.minHeight = `${maxHeight}px`;
+        });
+    }
+    
+    // Initialize card heights
+    equalizeCardHeights();
+    window.addEventListener('resize', equalizeCardHeights);
     
     // Initial attention-grabbing dance
     function initialDance() {
         serviceCards.forEach((card, index) => {
-            // Start with dance animation
-            card.classList.add('attention-dance');
-            
-            // Remove after delay (staggered)
             setTimeout(() => {
-                card.classList.remove('attention-dance');
-            }, 3000 + (index * 300));
+                card.classList.add('attention-dance');
+                setTimeout(() => {
+                    card.classList.remove('attention-dance');
+                }, 2000);
+            }, index * 200);
         });
     }
     
-    // Dance when mouse is nearby
+    // Dance when mouse is nearby (without rotation)
     function setupProximityDance() {
         document.addEventListener('mousemove', function(e) {
             serviceCards.forEach(card => {
@@ -347,36 +362,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initialDance();
     setupProximityDance();
     setupClickEffects();
-    
-    // Make cards dance periodically when not being interacted with
-    let danceTimeout;
-    function periodicDance() {
-        danceTimeout = setTimeout(() => {
-            serviceCards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add('attention-dance');
-                    setTimeout(() => {
-                        card.classList.remove('attention-dance');
-                    }, 2000);
-                }, index * 200);
-            });
-            periodicDance();
-        }, 30000); // Every 30 seconds
-    }
-    
-    // Start periodic dance
-    periodicDance();
-    
-    // Clear timeout when page is hidden to save resources
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            clearTimeout(danceTimeout);
-        } else {
-            periodicDance();
-        }
-    });
 });
-    </script>
+</script>
+    
 <!--     Start of skills section -->
    <section class="section bg-gray-100 py-16" id="technologies">
     <div class="container text-center">
