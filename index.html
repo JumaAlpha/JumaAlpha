@@ -1077,113 +1077,171 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </div>
-    <script>
-        $(document).ready(function() {
-    // Portfolio filter
-    $('.filter-btn').click(function() {
-        $('.filter-btn').removeClass('active');
-        $(this).addClass('active');
+    <script>$(document).ready(function() {
+    // Initialize portfolio filter
+    function initPortfolioFilter() {
+        $('.filter-btn').on('click', function() {
+            // Update active button
+            $('.filter-btn').removeClass('active');
+            $(this).addClass('active');
+            
+            // Filter items
+            const filterValue = $(this).data('filter');
+            if (filterValue === 'all') {
+                $('.portfolio-item').fadeIn(300);
+            } else {
+                $('.portfolio-item').hide();
+                $(`.portfolio-item[data-category="${filterValue}"]`).fadeIn(300);
+            }
+        });
+    }
+
+    // Initialize portfolio modal
+    function initPortfolioModal() {
+        // Cache selectors
+        const $modal = $('#portfolioModal');
+        const $modalLabel = $('#portfolioModalLabel');
+        const $projectDesc = $('.project-description');
+        const $techList = $('.tech-list');
+        const $featuresList = $('.features-list');
+        const $liveDemo = $('.live-demo');
+        const $carousel = $('.portfolio-modal-carousel');
         
-        const filterValue = $(this).data('filter');
-        if (filterValue === 'all') {
-            $('.portfolio-item').show();
+        // Click handler for portfolio items
+        $(document).on('click', '.portfolio-details', function(e) {
+            e.preventDefault();
+            
+            // Get data attributes
+            const $this = $(this);
+            const data = {
+                title: $this.data('title'),
+                description: $this.data('description'),
+                tech: $this.data('tech'),
+                images: $this.data('images'),
+                link: $this.data('link')
+            };
+            
+            // Validate and parse data
+            try {
+                // Set basic info
+                $modalLabel.text(data.title || 'Project Details');
+                $projectDesc.text(data.description || 'No description available.');
+                $liveDemo.attr('href', data.link || '#').toggleClass('disabled', !data.link);
+                
+                // Set technologies
+                $techList.empty();
+                if (data.tech) {
+                    data.tech.split(',').forEach(tech => {
+                        $techList.append(`<li><i class="fas fa-check-circle"></i> ${tech.trim()}</li>`);
+                    });
+                } else {
+                    $techList.append('<li>No technologies specified</li>');
+                }
+                
+                // Set features (you can customize these or pull from data attributes)
+                $featuresList.empty();
+                const features = [
+                    'Responsive Design',
+                    'Cross-browser Compatibility',
+                    'Optimized Performance',
+                    'User-friendly Interface'
+                ];
+                features.forEach(feature => {
+                    $featuresList.append(`<li><i class="fas fa-check"></i> ${feature}</li>`);
+                });
+                
+                // Process images
+                let images = [];
+                try {
+                    images = typeof data.images === 'string' ? JSON.parse(data.images) : (data.images || []);
+                } catch (e) {
+                    console.error('Error parsing images:', e);
+                }
+                
+                // Reinitialize carousel with new images
+                initCarousel($carousel, images, data.title);
+                
+                // Show modal
+                $modal.modal('show');
+            } catch (error) {
+                console.error('Error loading portfolio details:', error);
+                alert('Error loading project details. Please try again.');
+            }
+        });
+        
+        // Handle modal hidden event to reset carousel
+        $modal.on('hidden.bs.modal', function() {
+            $carousel.trigger('destroy.owl.carousel');
+            $carousel.html('');
+        });
+    }
+    
+    // Initialize Owl Carousel
+    function initCarousel($element, images, title) {
+        // Destroy existing carousel
+        $element.trigger('destroy.owl.carousel');
+        $element.html('');
+        
+        // Add images to carousel
+        if (images && images.length > 0) {
+            images.forEach((img, index) => {
+                $element.append(
+                    `<div class="item">
+                        <img src="${img}" alt="${title} - ${index + 1}" class="img-fluid rounded">
+                    </div>`
+                );
+            });
         } else {
-            $('.portfolio-item').hide();
-            $(`.portfolio-item[data-category="${filterValue}"]`).show();
-        }
-    });
-
-    // Initialize Owl Carousel for modal
-    $('.portfolio-modal-carousel').owlCarousel({
-        items: 1,
-        loop: true,
-        margin: 10,
-        nav: true,
-        dots: false,
-        navText: [
-            '<i class="fas fa-chevron-left"></i>',
-            '<i class="fas fa-chevron-right"></i>'
-        ]
-    });
-
-    // Portfolio modal content
-    $('.portfolio-details').click(function() {
-        const title = $(this).data('title');
-        const description = $(this).data('description');
-        const tech = $(this).data('tech');
-        const images = JSON.parse($(this).data('images'));
-        const link = $(this).data('link');
-        
-        // Set modal title
-        $('#portfolioModalLabel').text(title);
-        
-        // Set project description
-        $('.project-description').text(description);
-        
-        // Set technologies
-        $('.tech-list').empty();
-        tech.split(',').forEach(techItem => {
-            $('.tech-list').append(`<li>${techItem.trim()}</li>`);
-        });
-        
-        // Set features (example - you can add actual features)
-        $('.features-list').empty();
-        const features = [
-            'Responsive Design',
-            'Cross-browser Compatibility',
-            'Optimized Performance'
-        ];
-        features.forEach(feature => {
-            $('.features-list').append(`<li>${feature}</li>`);
-        });
-        
-        // Set live demo link
-        $('.live-demo').attr('href', link);
-        
-        // Set carousel images
-        $('.portfolio-modal-carousel').trigger('destroy.owl.carousel');
-        $('.portfolio-modal-carousel').html('');
-        images.forEach(image => {
-            $('.portfolio-modal-carousel').append(
-                `<div class="item"><img src="${image}" alt="${title}" class="img-fluid"></div>`
+            // Add placeholder if no images
+            $element.append(
+                `<div class="item">
+                    <div class="no-image-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>No images available</p>
+                    </div>
+                </div>`
             );
-        });
-        $('.portfolio-modal-carousel').owlCarousel({
+        }
+        
+        // Initialize Owl Carousel
+        $element.owlCarousel({
             items: 1,
-            loop: true,
+            loop: images.length > 1,
             margin: 10,
             nav: true,
             dots: false,
             navText: [
                 '<i class="fas fa-chevron-left"></i>',
                 '<i class="fas fa-chevron-right"></i>'
-            ]
+            ],
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true
         });
-    });
-});
-        // Update the getPortfolioImagesByCategory function
-function getPortfolioImagesByCategory(category) {
-    var images = {
-        'Front End': [
-            { src: 'assets/imgs/front-end-1.jpg', caption: 'Front-end Design 1' },
-            { src: 'assets/imgs/front-end-2.jpg', caption: 'Front-end Design 2' }
-        ],
-        'Backend': [
-            { src: 'assets/imgs/backend-1.jpg', caption: 'Backend Development 1' },
-            { src: 'assets/imgs/backend-2.jpg', caption: 'Backend Development 2' }
-        ],
-        'E-commerce': [
-            { src: 'assets/imgs/e-commerce-1.jpg', caption: 'E-commerce Site 1' },
-            { src: 'assets/imgs/e-commerce-2.jpg', caption: 'E-commerce Site 2' }
-        ],
-        'Mobile Apps': [
-            { src: 'assets/imgs/mobile-1.jpg', caption: 'Mobile App Screenshot 1' },
-            { src: 'assets/imgs/mobile-2.jpg', caption: 'Mobile App Screenshot 2' }
-        ]
-    };
+    }
     
-    return images[category] || [];
-}
+    // Initialize all functionality
+    function initPortfolio() {
+        initPortfolioFilter();
+        initPortfolioModal();
+        
+        // Optional: Shuffle portfolio items on load
+        shufflePortfolioItems();
+    }
+    
+    // Optional: Shuffle portfolio items
+    function shufflePortfolioItems() {
+        const $grid = $('.portfolio-grid');
+        const $items = $grid.children();
+        
+        for (let i = $items.length; i >= 0; i--) {
+            $grid.append($items[Math.random() * i | 0]);
+        }
+    }
+    
+    // Initialize the portfolio
+    initPortfolio();
+});
     </script>
     <!-- section -->
     <section class="section-sm bg-primary">
