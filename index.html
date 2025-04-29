@@ -41,6 +41,53 @@
     font-size: 1.2rem;
     color: #555;
 }
+        /* Add this to your CSS file */
+.service-card {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.service-card .body {
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.service-card:hover .body {
+    color: #fff;
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.service-card:hover::after {
+    opacity: 0.9;
+}
+
+.service-card:hover .icon {
+    filter: brightness(0) invert(1);
+    transform: scale(1.1);
+}
+
+.service-card .icon {
+    transition: all 0.3s ease;
+}
 
     </style>
 </head>
@@ -174,6 +221,44 @@
             </div><!-- end of row -->
         </div>
     </section><!-- end of service section -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach(card => {
+        // Mouse enter animation
+        card.addEventListener('mouseenter', function() {
+            this.style.transition = 'all 0.3s ease';
+            
+            // Add a slight delay for the icon animation
+            const icon = this.querySelector('.icon');
+            if (icon) {
+                setTimeout(() => {
+                    icon.style.transform = 'scale(1.1) rotate(5deg)';
+                }, 100);
+            }
+        });
+        
+        // Mouse leave animation
+        card.addEventListener('mouseleave', function() {
+            this.style.transition = 'all 0.3s ease';
+            
+            const icon = this.querySelector('.icon');
+            if (icon) {
+                icon.style.transform = 'scale(1) rotate(0)';
+            }
+        });
+        
+        // Click animation
+        card.addEventListener('click', function() {
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'translateY(-10px)';
+            }, 200);
+        });
+    });
+});
+    </script>
 <!--     Start of skills section -->
    <section class="section bg-gray-100 py-16" id="technologies">
     <div class="container text-center">
