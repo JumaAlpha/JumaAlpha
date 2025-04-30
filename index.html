@@ -19,6 +19,8 @@
 
     <!-- Add this in your HTML head section for Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+         <!-- Add this in your HTML head section for Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
         
     <style>
@@ -916,8 +918,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 
     <!-- portfolio section -->
- <!-- Add this in your HTML head section for Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
 <!-- Portfolio Section -->
 <section class="section" id="portfolio">
@@ -944,198 +945,98 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
 
+        <!-- Portfolio Data as JavaScript Array -->
+        <script>
+        const portfolioItems = [
+            {
+                id: 1,
+                category: "frontend",
+                title: "E-commerce Dashboard",
+                shortDesc: "React, Redux, Chart.js",
+                description: "A comprehensive dashboard for e-commerce analytics with real-time data visualization.",
+                tech: "React, Redux, Chart.js, REST API",
+                images: [
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFzaGJvYXJkfGVufDB8fDB8fHww",
+                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGFzaGJvYXJkfGVufDB8fDB8fHww"
+                ],
+                link: "https://example.com",
+                icon: "fas fa-chart-line"
+            },
+            {
+                id: 2,
+                category: "backend",
+                title: "API Service",
+                shortDesc: "Node.js, Express, MongoDB",
+                description: "RESTful API service with authentication and data processing capabilities.",
+                tech: "Node.js, Express, MongoDB, JWT",
+                images: [
+                    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y29kaW5nfGVufDB8fDB8fHww",
+                    "https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvZGluZ3xlbnwwfHwwfHx8MA%3D%3D"
+                ],
+                link: "https://api.example.com",
+                icon: "fas fa-project-diagram"
+            },
+            {
+                id: 3,
+                category: "ecommerce",
+                title: "Online Store",
+                shortDesc: "React, Node.js, Stripe",
+                description: "Full-featured e-commerce platform with payment processing and inventory management.",
+                tech: "React, Node.js, MongoDB, Stripe API",
+                images: [
+                    "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8b25saW5lJTIwc2hvcHBpbmd8ZW58MHx8MHx8fDA%3D",
+                    "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG9ubGluZSUyMHNob3BwaW5nfGVufDB8fDB8fHww"
+                ],
+                link: "https://store.example.com",
+                icon: "fas fa-store"
+            },
+            {
+                id: 4,
+                category: "mobile",
+                title: "Fitness Tracker App",
+                shortDesc: "React Native, Firebase",
+                description: "Cross-platform mobile application for tracking workouts and nutrition.",
+                tech: "React Native, Firebase, Redux, Google Fit API",
+                images: [
+                    "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Zml0bmVzc3xlbnwwfHwwfHx8MA%3D%3D",
+                    "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Zml0bmVzcyUyMGFwcHxlbnwwfHwwfHx8MA%3D%3D"
+                ],
+                link: "https://play.google.com/store/apps/details?id=com.example.fitness",
+                icon: "fas fa-running"
+            },
+            {
+                id: 5,
+                category: "mobile",
+                title: "Social Media App",
+                shortDesc: "Flutter, Node.js",
+                description: "Mobile social networking application with real-time messaging and content sharing.",
+                tech: "Flutter, Node.js, MongoDB, Socket.io",
+                images: [
+                    "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c29jaWFsJTIwbWVkaWF8ZW58MHx8MHx8fDA%3D",
+                    "https://images.unsplash.com/photo-1611162616475-465b4c42f0d4?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNvY2lhbCUyMG1lZGlhfGVufDB8fDB8fHww"
+                ],
+                link: "https://apps.apple.com/us/app/example-social/id123456789",
+                icon: "fas fa-users"
+            },
+            {
+                id: 6,
+                category: "ecommerce",
+                title: "POS System",
+                shortDesc: "Vue.js, Laravel",
+                description: "Point of Sale system with inventory management and sales reporting.",
+                tech: "Vue.js, Laravel, MySQL, Thermal Printer API",
+                images: [
+                    "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cG9zJTIwc3lzdGVtfGVufDB8fDB8fHww",
+                    "https://images.unsplash.com/photo-1607082350899-7e105aa886ae?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBvcyUyMHN5c3RlbXxlbnwwfHwwfHx8MA%3D%3D"
+                ],
+                link: "https://pos.example.com",
+                icon: "fas fa-cash-register"
+            }
+        ];
+        </script>
+
         <div class="row portfolio-grid">
-            <!-- Portfolio Item 1 - Frontend -->
-            <div class="col-lg-4 col-md-6 portfolio-item" data-category="frontend">
-                <div class="portfolio-card">
-                    <div class="portfolio-img-container">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFzaGJvYXJkfGVufDB8fDB8fHww" alt="E-commerce Dashboard" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h4>E-commerce Dashboard</h4>
-                                <p><i class="fas fa-tags"></i> React, Redux, Chart.js</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-details" data-toggle="modal" data-target="#portfolioModal" 
-                                       data-title="E-commerce Dashboard" 
-                                       data-description="A comprehensive dashboard for e-commerce analytics with real-time data visualization."
-                                       data-tech="React, Redux, Chart.js, REST API"
-                                       data-images='["https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFzaGJvYXJkfGVufDB8fDB8fHww","https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGFzaGJvYXJkfGVufDB8fDB8fHww"]'
-                                       data-link="https://example.com">
-                                        <i class="fas fa-expand"></i>
-                                    </a>
-                                    <a href="https://example.com" target="_blank" class="portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-caption">
-                        <h5><i class="fas fa-chart-line"></i> E-commerce Dashboard</h5>
-                        <span>Frontend Development</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Portfolio Item 2 - Backend -->
-            <div class="col-lg-4 col-md-6 portfolio-item" data-category="backend">
-                <div class="portfolio-card">
-                    <div class="portfolio-img-container">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y29kaW5nfGVufDB8fDB8fHww" alt="API Service" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h4>API Service</h4>
-                                <p><i class="fas fa-tags"></i> Node.js, Express, MongoDB</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-details" data-toggle="modal" data-target="#portfolioModal"
-                                       data-title="API Service" 
-                                       data-description="RESTful API service with authentication and data processing capabilities."
-                                       data-tech="Node.js, Express, MongoDB, JWT"
-                                       data-images='["https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y29kaW5nfGVufDB8fDB8fHww","https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvZGluZ3xlbnwwfHwwfHx8MA%3D%3D"]'
-                                       data-link="https://api.example.com">
-                                        <i class="fas fa-expand"></i>
-                                    </a>
-                                    <a href="https://api.example.com" target="_blank" class="portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-caption">
-                        <h5><i class="fas fa-project-diagram"></i> API Service</h5>
-                        <span>Backend Development</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Portfolio Item 3 - E-commerce -->
-            <div class="col-lg-4 col-md-6 portfolio-item" data-category="ecommerce">
-                <div class="portfolio-card">
-                    <div class="portfolio-img-container">
-                        <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8b25saW5lJTIwc2hvcHBpbmd8ZW58MHx8MHx8fDA%3D" alt="Online Store" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h4>Online Store</h4>
-                                <p><i class="fas fa-tags"></i> React, Node.js, Stripe</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-details" data-toggle="modal" data-target="#portfolioModal"
-                                       data-title="Online Store" 
-                                       data-description="Full-featured e-commerce platform with payment processing and inventory management."
-                                       data-tech="React, Node.js, MongoDB, Stripe API"
-                                       data-images='["https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8b25saW5lJTIwc2hvcHBpbmd8ZW58MHx8MHx8fDA%3D","https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG9ubGluZSUyMHNob3BwaW5nfGVufDB8fDB8fHww"]'
-                                       data-link="https://store.example.com">
-                                        <i class="fas fa-expand"></i>
-                                    </a>
-                                    <a href="https://store.example.com" target="_blank" class="portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-caption">
-                        <h5><i class="fas fa-store"></i> Online Store</h5>
-                        <span>E-commerce Solution</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Portfolio Item 4 - Mobile App -->
-            <div class="col-lg-4 col-md-6 portfolio-item" data-category="mobile">
-                <div class="portfolio-card">
-                    <div class="portfolio-img-container">
-                        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Zml0bmVzc3xlbnwwfHwwfHx8MA%3D%3D" alt="Fitness Tracker App" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h4>Fitness Tracker App</h4>
-                                <p><i class="fas fa-tags"></i> React Native, Firebase</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-details" data-toggle="modal" data-target="#portfolioModal"
-                                       data-title="Fitness Tracker App" 
-                                       data-description="Cross-platform mobile application for tracking workouts and nutrition."
-                                       data-tech="React Native, Firebase, Redux, Google Fit API"
-                                       data-images='["https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Zml0bmVzc3xlbnwwfHwwfHx8MA%3D%3D","https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Zml0bmVzcyUyMGFwcHxlbnwwfHwwfHx8MA%3D%3D"]'
-                                       data-link="https://play.google.com/store/apps/details?id=com.example.fitness">
-                                        <i class="fas fa-expand"></i>
-                                    </a>
-                                    <a href="https://play.google.com/store/apps/details?id=com.example.fitness" target="_blank" class="portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-caption">
-                        <h5><i class="fas fa-running"></i> Fitness Tracker</h5>
-                        <span>Mobile Application</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Portfolio Item 5 - Mobile App -->
-            <div class="col-lg-4 col-md-6 portfolio-item" data-category="mobile">
-                <div class="portfolio-card">
-                    <div class="portfolio-img-container">
-                        <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c29jaWFsJTIwbWVkaWF8ZW58MHx8MHx8fDA%3D" alt="Social Media App" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h4>Social Media App</h4>
-                                <p><i class="fas fa-tags"></i> Flutter, Node.js</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-details" data-toggle="modal" data-target="#portfolioModal"
-                                       data-title="Social Media App" 
-                                       data-description="Mobile social networking application with real-time messaging and content sharing."
-                                       data-tech="Flutter, Node.js, MongoDB, Socket.io"
-                                       data-images='["https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c29jaWFsJTIwbWVkaWF8ZW58MHx8MHx8fDA%3D","https://images.unsplash.com/photo-1611162616475-465b4c42f0d4?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNvY2lhbCUyMG1lZGlhfGVufDB8fDB8fHww"]'
-                                       data-link="https://apps.apple.com/us/app/example-social/id123456789">
-                                        <i class="fas fa-expand"></i>
-                                    </a>
-                                    <a href="https://apps.apple.com/us/app/example-social/id123456789" target="_blank" class="portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-caption">
-                        <h5><i class="fas fa-users"></i> Social Media App</h5>
-                        <span>Mobile Application</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Portfolio Item 6 - E-commerce -->
-            <div class="col-lg-4 col-md-6 portfolio-item" data-category="ecommerce">
-                <div class="portfolio-card">
-                    <div class="portfolio-img-container">
-                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cG9zJTIwc3lzdGVtfGVufDB8fDB8fHww" alt="POS System" class="portfolio-img">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-info">
-                                <h4>POS System</h4>
-                                <p><i class="fas fa-tags"></i> Vue.js, Laravel</p>
-                                <div class="portfolio-links">
-                                    <a href="#" class="portfolio-details" data-toggle="modal" data-target="#portfolioModal"
-                                       data-title="POS System" 
-                                       data-description="Point of Sale system with inventory management and sales reporting."
-                                       data-tech="Vue.js, Laravel, MySQL, Thermal Printer API"
-                                       data-images='["https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cG9zJTIwc3lzdGVtfGVufDB8fDB8fHww","https://images.unsplash.com/photo-1607082350899-7e105aa886ae?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBvcyUyMHN5c3RlbXxlbnwwfHwwfHx8MA%3D%3D"]'
-                                       data-link="https://pos.example.com">
-                                        <i class="fas fa-expand"></i>
-                                    </a>
-                                    <a href="https://pos.example.com" target="_blank" class="portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-caption">
-                        <h5><i class="fas fa-cash-register"></i> POS System</h5>
-                        <span>E-commerce Solution</span>
-                    </div>
-                </div>
-            </div>
+            <!-- Portfolio items will be generated by JavaScript -->
         </div>
     </div>
 </section>
@@ -1170,9 +1071,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <h4><i class="fas fa-star"></i> Key Features</h4>
                                     <ul class="features-list"></ul>
                                     
-                                    <a href="#" class="btn btn-primary live-demo" target="_blank">
+                                    <!-- Commented out Live Demo button -->
+                                    <!-- <a href="#" class="btn btn-primary live-demo" target="_blank">
                                         <i class="fas fa-external-link-alt"></i> View Live Demo
-                                    </a>
+                                    </a> -->
                                 </div>
                             </div>
                         </div>
@@ -1185,6 +1087,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 $(document).ready(function() {
+    // Generate portfolio items from the array
+    function generatePortfolioItems() {
+        const $portfolioGrid = $('.portfolio-grid');
+        $portfolioGrid.empty();
+        
+        portfolioItems.forEach(item => {
+            const portfolioItem = `
+                <div class="col-lg-4 col-md-6 portfolio-item" data-category="${item.category}" data-id="${item.id}">
+                    <div class="portfolio-card">
+                        <div class="portfolio-img-container">
+                            <img src="${item.images[0]}" alt="${item.title}" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-info">
+                                    <h4>${item.title}</h4>
+                                    <p><i class="fas fa-tags"></i> ${item.shortDesc}</p>
+                                    <div class="portfolio-links">
+                                        <a href="#" class="portfolio-details" data-toggle="modal" data-target="#portfolioModal" 
+                                           data-id="${item.id}">
+                                            <i class="fas fa-expand"></i>
+                                        </a>
+                                        <!-- Commented out external link -->
+                                        <!-- <a href="${item.link}" target="_blank" class="portfolio-link">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-caption">
+                            <h5><i class="${item.icon}"></i> ${item.title}</h5>
+                            <span>${getCategoryName(item.category)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            $portfolioGrid.append(portfolioItem);
+        });
+    }
+    
+    // Helper function to get category name
+    function getCategoryName(category) {
+        const categories = {
+            'frontend': 'Frontend Development',
+            'backend': 'Backend Development',
+            'ecommerce': 'E-commerce Solution',
+            'mobile': 'Mobile Application'
+        };
+        return categories[category] || 'Project';
+    }
+
     // Initialize portfolio filter
     function initPortfolioFilter() {
         $('.filter-btn').on('click', function() {
@@ -1218,62 +1170,43 @@ $(document).ready(function() {
         $(document).on('click', '.portfolio-details', function(e) {
             e.preventDefault();
             
-            // Get data attributes
-            const $this = $(this);
-            const data = {
-                title: $this.data('title'),
-                description: $this.data('description'),
-                tech: $this.data('tech'),
-                images: $this.data('images'),
-                link: $this.data('link')
-            };
+            // Get item ID
+            const itemId = $(this).data('id');
+            const item = portfolioItems.find(i => i.id === itemId);
             
-            // Validate and parse data
-            try {
-                // Set basic info
-                $modalLabel.text(data.title || 'Project Details');
-                $projectDesc.text(data.description || 'No description available.');
-                $liveDemo.attr('href', data.link || '#').toggleClass('disabled', !data.link);
-                
-                // Set technologies
-                $techList.empty();
-                if (data.tech) {
-                    data.tech.split(',').forEach(tech => {
-                        $techList.append(`<li><i class="fas fa-check-circle"></i> ${tech.trim()}</li>`);
-                    });
-                } else {
-                    $techList.append('<li>No technologies specified</li>');
-                }
-                
-                // Set features (you can customize these or pull from data attributes)
-                $featuresList.empty();
-                const features = [
-                    'Responsive Design',
-                    'Cross-browser Compatibility',
-                    'Optimized Performance',
-                    'User-friendly Interface'
-                ];
-                features.forEach(feature => {
-                    $featuresList.append(`<li><i class="fas fa-check"></i> ${feature}</li>`);
+            if (!item) return;
+            
+            // Set modal content
+            $modalLabel.text(item.title);
+            $projectDesc.text(item.description);
+            
+            // Set technologies
+            $techList.empty();
+            if (item.tech) {
+                item.tech.split(',').forEach(tech => {
+                    $techList.append(`<li><i class="fas fa-check-circle"></i> ${tech.trim()}</li>`);
                 });
-                
-                // Process images
-                let images = [];
-                try {
-                    images = typeof data.images === 'string' ? JSON.parse(data.images) : (data.images || []);
-                } catch (e) {
-                    console.error('Error parsing images:', e);
-                }
-                
-                // Reinitialize carousel with new images
-                initCarousel($carousel, images, data.title);
-                
-                // Show modal
-                $modal.modal('show');
-            } catch (error) {
-                console.error('Error loading portfolio details:', error);
-                alert('Error loading project details. Please try again.');
+            } else {
+                $techList.append('<li>No technologies specified</li>');
             }
+            
+            // Set features (you can customize these or add to the portfolioItems array)
+            $featuresList.empty();
+            const features = [
+                'Responsive Design',
+                'Cross-browser Compatibility',
+                'Optimized Performance',
+                'User-friendly Interface'
+            ];
+            features.forEach(feature => {
+                $featuresList.append(`<li><i class="fas fa-check"></i> ${feature}</li>`);
+            });
+            
+            // Process images
+            initCarousel($carousel, item.images, item.title);
+            
+            // Show modal
+            $modal.modal('show');
         });
         
         // Handle modal hidden event to reset carousel
@@ -1329,27 +1262,15 @@ $(document).ready(function() {
     
     // Initialize all functionality
     function initPortfolio() {
+        generatePortfolioItems();
         initPortfolioFilter();
         initPortfolioModal();
-        
-        // Optional: Shuffle portfolio items on load
-        shufflePortfolioItems();
-    }
-    
-    // Optional: Shuffle portfolio items
-    function shufflePortfolioItems() {
-        const $grid = $('.portfolio-grid');
-        const $items = $grid.children();
-        
-        for (let i = $items.length; i >= 0; i--) {
-            $grid.append($items[Math.random() * i | 0]);
-        }
     }
     
     // Initialize the portfolio
     initPortfolio();
 });
-</script>    <!-- section -->
+</script>
     <section class="section-sm bg-primary">
         <!-- container -->
         <div class="container text-center text-sm-left">
