@@ -948,91 +948,97 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- Portfolio Data as JavaScript Array -->
         <script>
         const portfolioItems = [
-            {
-                id: 1,
-                category: "frontend",
-                title: "E-commerce Dashboard",
-                shortDesc: "React, Redux, Chart.js",
-                description: "A comprehensive dashboard for e-commerce analytics with real-time data visualization.",
-                tech: "React, Redux, Chart.js, REST API",
-                images: [
-                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFzaGJvYXJkfGVufDB8fDB8fHww",
-                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGFzaGJvYXJkfGVufDB8fDB8fHww"
-                ],
-                link: "https://example.com",
-                icon: "fas fa-chart-line"
-            },
-            {
-                id: 2,
-                category: "backend",
-                title: "API Service",
-                shortDesc: "Node.js, Express, MongoDB",
-                description: "RESTful API service with authentication and data processing capabilities.",
-                tech: "Node.js, Express, MongoDB, JWT",
-                images: [
-                    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y29kaW5nfGVufDB8fDB8fHww",
-                    "https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvZGluZ3xlbnwwfHwwfHx8MA%3D%3D"
-                ],
-                link: "https://api.example.com",
-                icon: "fas fa-project-diagram"
-            },
-            {
-                id: 3,
-                category: "ecommerce",
-                title: "Online Store",
-                shortDesc: "React, Node.js, Stripe",
-                description: "Full-featured e-commerce platform with payment processing and inventory management.",
-                tech: "React, Node.js, MongoDB, Stripe API",
-                images: [
-                    "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8b25saW5lJTIwc2hvcHBpbmd8ZW58MHx8MHx8fDA%3D",
-                    "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG9ubGluZSUyMHNob3BwaW5nfGVufDB8fDB8fHww"
-                ],
-                link: "https://store.example.com",
-                icon: "fas fa-store"
-            },
-            {
-                id: 4,
-                category: "mobile",
-                title: "Fitness Tracker App",
-                shortDesc: "React Native, Firebase",
-                description: "Cross-platform mobile application for tracking workouts and nutrition.",
-                tech: "React Native, Firebase, Redux, Google Fit API",
-                images: [
-                    "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Zml0bmVzc3xlbnwwfHwwfHx8MA%3D%3D",
-                    "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Zml0bmVzcyUyMGFwcHxlbnwwfHwwfHx8MA%3D%3D"
-                ],
-                link: "https://play.google.com/store/apps/details?id=com.example.fitness",
-                icon: "fas fa-running"
-            },
-            {
-                id: 5,
-                category: "mobile",
-                title: "Social Media App",
-                shortDesc: "Flutter, Node.js",
-                description: "Mobile social networking application with real-time messaging and content sharing.",
-                tech: "Flutter, Node.js, MongoDB, Socket.io",
-                images: [
-                    "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c29jaWFsJTIwbWVkaWF8ZW58MHx8MHx8fDA%3D",
-                    "https://images.unsplash.com/photo-1611162616475-465b4c42f0d4?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNvY2lhbCUyMG1lZGlhfGVufDB8fDB8fHww"
-                ],
-                link: "https://apps.apple.com/us/app/example-social/id123456789",
-                icon: "fas fa-users"
-            },
-            {
-                id: 6,
-                category: "ecommerce",
-                title: "POS System",
-                shortDesc: "Vue.js, Laravel",
-                description: "Point of Sale system with inventory management and sales reporting.",
-                tech: "Vue.js, Laravel, MySQL, Thermal Printer API",
-                images: [
-                    "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cG9zJTIwc3lzdGVtfGVufDB8fDB8fHww",
-                    "https://images.unsplash.com/photo-1607082350899-7e105aa886ae?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBvcyUyMHN5c3RlbXxlbnwwfHwwfHx8MA%3D%3D"
-                ],
-                link: "https://pos.example.com",
-                icon: "fas fa-cash-register"
-            }
-        ];
+    {
+        id: 1,
+        category: "frontend",
+        title: "E-commerce Dashboard",
+        shortDesc: "React, Redux, Chart.js",
+        description: "A dynamic and interactive dashboard designed for e-commerce businesses to monitor and analyze their performance in real-time. The dashboard features comprehensive data visualization tools including charts and graphs to display sales trends, customer behavior, and inventory status. Built with React for a responsive UI, Redux for state management, and Chart.js for visualizing complex data sets. Integrates with REST APIs to fetch and display live data.",
+        fullDescription: "This dashboard provides merchants with actionable insights through: \n- Real-time sales analytics with customizable time periods\n- Customer segmentation and behavior tracking\n- Inventory level monitoring with low-stock alerts\n- Responsive design that works on desktop and tablet devices\n\nThe Redux architecture ensures consistent state management across all components, while Chart.js delivers performant rendering of complex datasets without compromising user experience.",
+        tech: "React, Redux, Chart.js, REST API",
+        images: [
+            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFzaGJvYXJkfGVufDB8fDB8fHww",
+            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGFzaGJvYXJkfGVufDB8fDB8fHww"
+        ],
+        link: "https://example.com",
+        icon: "fas fa-chart-line"
+    },
+    {
+        id: 2,
+        category: "backend",
+        title: "API Service",
+        shortDesc: "Node.js, Express, MongoDB",
+        description: "RESTful API service with authentication and data processing capabilities.",
+        fullDescription: "A scalable backend solution featuring:\n- JWT authentication with role-based permissions\n- Rate limiting and request validation middleware\n- MongoDB aggregation pipelines for complex queries\n- Automated testing with 95% code coverage\n- Swagger documentation for all endpoints\n\nOptimized for high throughput with Redis caching and connection pooling. Handles up to 1000 requests/second in production environment.",
+        tech: "Node.js, Express, MongoDB, JWT",
+        images: [
+            "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y29kaW5nfGVufDB8fDB8fHww",
+            "https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvZGluZ3xlbnwwfHwwfHx8MA%3D%3D"
+        ],
+        link: "https://api.example.com",
+        icon: "fas fa-project-diagram"
+    },
+    {
+        id: 3,
+        category: "ecommerce",
+        title: "Online Store",
+        shortDesc: "React, Node.js, Stripe",
+        description: "Full-featured e-commerce platform with payment processing and inventory management.",
+        fullDescription: "Complete shopping solution including:\n- Product catalog with filters and search\n- User accounts with order history\n- Admin dashboard for product management\n- Stripe integration with 3D Secure\n- Automated inventory updates\n- Shipping calculator with real-time rates\n\nBuilt with microservices architecture for scalability. Handles 500+ concurrent users during peak sales periods.",
+        tech: "React, Node.js, MongoDB, Stripe API",
+        images: [
+            "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8b25saW5lJTIwc2hvcHBpbmd8ZW58MHx8MHx8fDA%3D",
+            "https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG9ubGluZSUyMHNob3BwaW5nfGVufDB8fDB8fHww"
+        ],
+        link: "https://store.example.com",
+        icon: "fas fa-store"
+    },
+    {
+        id: 4,
+        category: "mobile",
+        title: "Fitness Tracker App",
+        shortDesc: "React Native, Firebase",
+        description: "Cross-platform mobile application for tracking workouts and nutrition.",
+        fullDescription: "Comprehensive fitness companion with:\n- 500+ exercise database with animations\n- Workout planner with rest timer\n- Nutrition tracker with barcode scanning\n- Google Fit/Apple Health integration\n- Progress photos and measurements\n- Social features to share achievements\n\nOffline-first design with Firebase sync. 4.8/5 rating in app stores with 50k+ downloads.",
+        tech: "React Native, Firebase, Redux, Google Fit API",
+        images: [
+            "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Zml0bmVzc3xlbnwwfHwwfHx8MA%3D%3D",
+            "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Zml0bmVzcyUyMGFwcHxlbnwwfHwwfHx8MA%3D%3D"
+        ],
+        link: "https://play.google.com/store/apps/details?id=com.example.fitness",
+        icon: "fas fa-running"
+    },
+    {
+        id: 5,
+        category: "mobile",
+        title: "Social Media App",
+        shortDesc: "Flutter, Node.js",
+        description: "Mobile social networking application with real-time messaging and content sharing.",
+        fullDescription: "Feature-rich social platform including:\n- End-to-end encrypted messaging\n- Photo/video feed with filters\n- Event planning system\n- User reputation scoring\n- Moderation dashboard\n- Push notifications with deep linking\n\nUses Firebase for media storage and CDN delivery. 30% faster rendering than comparable React Native apps.",
+        tech: "Flutter, Node.js, MongoDB, Socket.io",
+        images: [
+            "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c29jaWFsJTIwbWVkaWF8ZW58MHx8MHx8fDA%3D",
+            "https://images.unsplash.com/photo-1611162616475-465b4c42f0d4?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNvY2lhbCUyMG1lZGlhfGVufDB8fDB8fHww"
+        ],
+        link: "https://apps.apple.com/us/app/example-social/id123456789",
+        icon: "fas fa-users"
+    },
+    {
+        id: 6,
+        category: "ecommerce",
+        title: "POS System",
+        shortDesc: "Vue.js, Laravel",
+        description: "Point of Sale system with inventory management and sales reporting.",
+        fullDescription: "Retail management system featuring:\n- Touch-optimized interface\n- Barcode scanning support\n- Customer loyalty programs\n- Multi-location inventory sync\n- X/Z report generation\n- Thermal printer integration\n\nReduced checkout times by 40% in pilot stores. Supports offline mode with automatic cloud sync when reconnected.",
+        tech: "Vue.js, Laravel, MySQL, Thermal Printer API",
+        images: [
+            "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cG9zJTIwc3lzdGVtfGVufDB8fDB8fHww",
+            "https://images.unsplash.com/photo-1607082350899-7e105aa886ae?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBvcyUyMHN5c3RlbXxlbnwwfHwwfHx8MA%3D%3D"
+        ],
+        link: "https://pos.example.com",
+        icon: "fas fa-cash-register"
+    }
+];
         </script>
 
         <div class="row portfolio-grid">
