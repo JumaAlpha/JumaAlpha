@@ -1562,19 +1562,18 @@ function closeBlogViewer() {
     
 </script>
 
-    
 <section class="section" id="contact">
   <div class="container text-center">
     <p class="section-subtitle">How can you communicate?</p>
     <h6 class="section-title mb-5">Contact Me</h6>
 
-    <!-- contact form -->
     <form id="contactForm" class="contact-form col-md-10 col-lg-8 m-auto">
       <div class="form-row">
+
         <!-- Communication Method -->
-        <div class="form-group col-sm-12">
-          <label for="contactMethod" class="block text-left">How would you like to reach out?</label>
-          <select id="contactMethod" class="form-control" required>
+        <div class="form-group col-sm-12 text-left">
+          <label for="contactMethod">How would you like to reach out?</label>
+          <select id="contactMethod" name="contactMethod" class="form-control" required>
             <option value="">Choose a method...</option>
             <option value="email">Email</option>
             <option value="whatsapp">WhatsApp</option>
@@ -1583,22 +1582,22 @@ function closeBlogViewer() {
 
         <!-- Name -->
         <div class="form-group col-sm-6">
-          <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+          <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
         </div>
 
         <!-- Email Field -->
         <div class="form-group col-sm-6" id="emailField" style="display: none;">
-          <input type="email" id="email" class="form-control" placeholder="Enter Email">
+          <input type="email" id="email" name="email" class="form-control" placeholder="Enter Your Email">
         </div>
 
         <!-- WhatsApp Field -->
         <div class="form-group col-sm-6" id="whatsappField" style="display: none;">
-          <input type="text" id="whatsapp" class="form-control" placeholder="Enter Your WhatsApp Number">
+          <input type="text" id="whatsapp" name="whatsapp" class="form-control" placeholder="Enter Your WhatsApp Number">
         </div>
 
         <!-- Message -->
         <div class="form-group col-sm-12">
-          <textarea name="message" id="message" rows="6" class="form-control" placeholder="Write Something"></textarea>
+          <textarea name="message" id="message" rows="6" class="form-control" placeholder="Write Something" required></textarea>
         </div>
 
         <!-- Submit Button -->
@@ -1606,48 +1605,59 @@ function closeBlogViewer() {
           <button type="button" id="sendMessage" class="btn btn-outline-primary rounded">Send Message</button>
         </div>
       </div>
-    </form><!-- end of contact form -->
-  </div><!-- end of container -->
+    </form>
+  </div>
 </section>
 
-    
-
-<!-- JavaScript to toggle fields based on the communication method -->
 <script>
-  document.getElementById('contactMethod').addEventListener('change', function () {
-    const selectedMethod = this.value;
-    document.getElementById('emailField').style.display = selectedMethod === 'email' ? 'block' : 'none';
-    document.getElementById('whatsappField').style.display = selectedMethod === 'whatsapp' ? 'block' : 'none';
+  const contactMethod = document.getElementById('contactMethod');
+  const emailField = document.getElementById('emailField');
+  const whatsappField = document.getElementById('whatsappField');
+  const sendMessage = document.getElementById('sendMessage');
+
+  contactMethod.addEventListener('change', function () {
+    emailField.style.display = 'none';
+    whatsappField.style.display = 'none';
+
+    if (this.value === 'email') {
+      emailField.style.display = 'block';
+      document.getElementById('email').required = true;
+      document.getElementById('whatsapp').required = false;
+    } else if (this.value === 'whatsapp') {
+      whatsappField.style.display = 'block';
+      document.getElementById('whatsapp').required = true;
+      document.getElementById('email').required = false;
+    }
   });
 
-  document.getElementById('sendMessage').addEventListener('click', function () {
-    const method = document.getElementById('contactMethod').value;
-    const name = document.getElementById('name').value;
-    const message = document.getElementById('message').value;
+  sendMessage.addEventListener('click', function () {
+    const method = contactMethod.value;
+    const name = document.getElementById('name').value.trim();
+    const message = document.getElementById('message').value.trim();
+    
+    if (!method || !name || !message) {
+      alert('Please fill out all required fields.');
+      return;
+    }
 
-    if (method === 'email') {
-      const email = document.getElementById('email').value;
-      if (!email) {
-        alert('Please enter your email address.');
-        return;
-      }
-      const mailtoLink = `mailto:${email}?subject=Message from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
-      window.open(mailtoLink, '_blank');
-    } else if (method === 'whatsapp') {
-      const whatsappNumber = document.getElementById('whatsapp').value;
-      if (!whatsappNumber) {
-        alert('Please enter your WhatsApp number.');
-        return;
-      }
-      const whatsappLink = `https://wa.me/$+254768031594?text=${encodeURIComponent(`Hi, this is ${name}. ${message}`)}`;
-      window.open(whatsappLink, '_blank');
+    if (method === 'whatsapp') {
+      // WhatsApp contact
+      const whatsappMessage = encodeURIComponent(`Hello, my name is ${name}. ${message}`);
+      const whatsappNumber = '254768031594'; // without +
+      window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+    } else if (method === 'email') {
+      // Email contact
+      const email = 'jumaalpha69@gmail.com';
+      const subject = encodeURIComponent(`Message from ${name}`);
+      const body = encodeURIComponent(message);
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     } else {
-      alert('Please select a communication method.');
+      alert('Please select a contact method.');
     }
   });
 </script>
 
-</script>
+
 
 
     <!-- footer -->
