@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=Juma%20Alpha&fontSize=80&animation=fadeIn&fontAlignY=35">
   
-  <h1>😁 Juma Alpha</h1>
+  <h1>Hello am Juma....</h1>
   <h3>Full Stack Web Developer</h3>
   <p><i>"Programming is my language"</i> | Founder at <strong>Alpho Softwares</strong></p>
   
