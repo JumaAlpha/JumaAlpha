@@ -1,6 +1,6 @@
 # Juma Alpha
 
-**Full Stack Web Developer** | Founder at Alpho Softwares
+**Full Stack Web Developer** | Founder at alvon.co.ke
 
 ---
 
